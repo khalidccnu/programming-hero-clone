@@ -1,0 +1,19 @@
+{
+  "name": "programming-hero-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "tw": "npx tailwindcss -i ./asset/tailwind/input.css -o ./asset/tailwind/output.css -w",
+    "sass": "sass ./asset/sass/style.scss ./asset/css/style.css -w",
+    "build": "concurrently \"npm run tw\" \"npm run sass\""
+  },
+  "keywords": [],
+  "author": "S.M. Khalid Mahmud",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "sass": "^1.54.5",
+    "tailwindcss": "^3.1.8"
+  }
+}

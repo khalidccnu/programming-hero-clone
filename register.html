@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Social Media -->
+    <meta property="og:title" content="Register - Programming Hero">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="./asset/img/social.jpg">
+    <meta property="og:image:alt" content="Programming Hero">
+    <meta property="og:url" content="https://projects.khalidmahmud.me/programming-hero-clone/register">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Title -->
+    <title>Register - Programming Hero</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./asset/img/favicon.ico" type="image/x-icon">
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="./asset/tailwind/output.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./asset/css/style.css">
+</head>
+<body class="flex flex-col min-h-screen font-body dark:bg-slate-900" onload="preloader()">
+<!-- Preloader -->
+<div class="fixed w-full h-screen bg-[#ede9df] bg-[url('../img/preloader.gif')] bg-no-repeat bg-center bg-[length:_24rem] z-[999] transition-transform duration-500" id="preloader"></div>
+
+<!-- Header -->
+<header class="fixed w-full z-50 transition-transform duration-500">
+    <nav class="py-6">
+        <div class="container flex flex-wrap md:items-center">
+            <a href="./" class="w-1/2 md:w-auto">
+                <img src="./asset/img/logo.png" alt="" class="h-[30px]">
+            </a>
+            <div class="w-[calc(50%_-_2.8rem)] md:hidden text-end">
+                <button type="button" class="text-white hover:text-pink-500" onclick="navbar_toggle('navbar-collapse')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path id="menu" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex ml-auto md:ml-2" id="tm-switch">
+                <label class="relative w-10 h-6">
+                    <input type="checkbox" class="w-0 h-0 opacity-0 peer">
+                    <span class="absolute inset-0 bg-white rounded-2xl cursor-pointer transition-[background-color] duration-500 before:content-[''] before:absolute before:left-1 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:rounded-full before:bg-[linear-gradient(40deg,_#ff0080,_#ff8c00_70%)] before:transition-all before:duration-500 peer-checked:bg-slate-700 peer-checked:before:left-[calc(100%_-_1.3rem)] peer-checked:before:bg-none peer-checked:before:bg-slate-700 peer-checked:before:shadow-[inset_-3px_-2px_5px_-8px_#8983f7,_inset_-10px_-3px_0_0_#a3dafb]"></span>
+                </label>
+            </div>
+            <div class="hidden w-full md:w-auto md:flex flex-col md:flex-row md:ml-auto text-sm md:space-x-6 space-y-4 md:space-y-0 mt-8 md:mt-0" id="navbar-collapse">
+                <ul class="flex flex-col items-center md:flex-row md:space-x-6 space-y-4 md:space-y-0">
+                    <li class="text-center"><a href="#" class="capitalize text-white hover:text-pink-500">about us</a></li>
+                    <li class="text-center"><a href="#" class="capitalize text-white hover:text-pink-500">blog</a></li>
+                    <li class="text-center"><a href="#" class="capitalize text-white hover:text-pink-500">success</a></li>
+                    <li class="w-fit">
+                        <a href="#" class="relative text-white hover:text-pink-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                            <span class="absolute top-[12px] left-[15px] w-[14px] h-[14px] inline-flex justify-center items-center bg-[#ffda45] rounded-lg text-[75%] font-bold">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="space-x-2 text-center">
+                    <button type="button" class="login-btn border border-solid border-white rounded-[52px] px-4 py-2 hover:bg-white text-white hover:text-[#6047ec] capitalize transition" onclick="window.location.href='login'">login</button>
+                    <button type="button" class="bg-[linear-gradient(335.64deg,_#ff589b_-19.22%,_#ff136f_118.87%)] hover:bg-[linear-gradient(300.64deg,_#ff136f_118.87%,_#ff589b_-19.22%)] rounded-[52px] px-4 py-2 text-white capitalize" onclick="window.location.href='register'">register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Register -->
+<section class="register bg-[linear-gradient(107.07deg,_#684efb_-6.64%,_#5a00dd_89.11%)] dark:bg-none pt-32 pb-20">
+    <div class="container">
+        <div class="row flex flex-wrap sm:items-center">
+            <div class="col w-full sm:w-7/12 md:w-1/2">
+                <div class="card bg-white dark:bg-slate-700 px-4 sm:px-6 lg:px-12 py-6 md:py-12 rounded-3xl capitalize">
+                    <h2 class="text-2xl font-semibold text-purple-500 dark:text-white mb-6">register</h2>
+                    <form action="#" method="post">
+                        <div class="mb-4">
+                            <label for="name" class="hidden">name</label>
+                            <input type="text" name="name" class="dark:bg-slate-900 w-full h-12 text-sm text-gray-500 dark:text-white border border-gray-300 focus:border-purple-300 p-5 rounded-[59px] focus:outline-none" id="name" placeholder="Name" minlength="5" maxlength="30" autofocus required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="hidden">email</label>
+                            <input type="email" name="email" class="dark:bg-slate-900 w-full h-12 text-sm text-gray-500 dark:text-white border border-gray-300 focus:border-purple-300 p-5 rounded-[59px] focus:outline-none" id="email" placeholder="Email" minlength="5" maxlength="50" required>
+                        </div>
+                        <div class="relative mb-4">
+                            <label for="password" class="hidden">password</label>
+                            <input type="password" name="password" class="dark:bg-slate-900 w-full h-12 text-sm text-gray-500 dark:text-white border border-gray-300 focus:border-purple-300 p-5 rounded-[59px] focus:outline-none" id="password" placeholder="Password" minlength="6" maxlength="30" required>
+                            <span class="absolute top-1/2 -translate-y-1/2 right-5">
+                                <i class="fa fa-eye-slash text-gray-500 hover:text-pink-500 cursor-pointer" id="hide-password" onclick="control_password()"></i>
+                            </span>
+                        </div>
+                        <div class="mb-8">
+                            <input type="checkbox" name="acceptance" class="cursor-pointer" id="acceptance" required checked>
+                            <label for="acceptance" class="text-gray-500 dark:text-white normal-case">I agree to the <a href="#" class="text-blue-800 hover:text-pink-500 dark:text-gray-300 dark:hover:text-pink-500">terms and conditions</a>.</label>
+                        </div>
+                        <button type="submit" class="btn-primary w-full capitalize text-white">register</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col hidden sm:block sm:w-5/12 md:w-1/2">
+                <img src="./asset/img/slider/hs-2.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[linear-gradient(107.07deg,_#684efb_-6.64%,_#5a00dd_89.11%)] dark:bg-none dark:bg-slate-700 py-20 mt-auto text-white">
+    <div class="container">
+        <div class="row flex flex-wrap text-center md:text-start">
+            <div class="col w-full md:w-3/5 md:mr-auto lg:w-5/12">
+                <ul>
+                    <li class="mb-8">
+                        <img src="./asset/img/logo.png" alt="" class="mx-auto md:mx-0">
+                    </li>
+                    <li class="mb-2">
+                        <i class="fa fa-map-marker-alt w-6"></i>
+                        <span>Level-4, 34, Awal Centre, Banani, Dhaka</span>
+                    </li>
+                    <li class="mb-2">
+                        <i class="fa fa-envelope w-6"></i>
+                        <span>Official: <a href="mailto:web@programming-hero.com" class="hover:text-pink-500">web@programming-hero.com</a></span>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt w-6"></i>
+                        <span>Helpline: <a href="tel:+8801322810867" class="hover:text-pink-500">01322810867</a> (Available: Sat - Thu, 10:00 AM to 7:00 PM)</span>
+                    </li>
+                    <li class="mt-5">
+                        <a href="#">
+                            <img src="./asset/img/play-badge.png" alt="" class="inline">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col w-full md:w-fit lg:w-3/12 order-first md:order-2 mb-10 md:mb-0 capitalize">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="hover:text-pink-500">blog</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">success</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">about us</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">refund policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">terms and conditions</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">privacy & app privacy policy</a>
+                    </li>
+                    <li>
+                        <ul class="flex justify-center md:justify-start space-x-3">
+                            <li>
+                                <a href="#" class="inline-flex justify-center items-center w-8 h-8 rounded-full bg-pink-500 transition-transform duration-1000 hover:rotate-[360deg]"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="inline-flex justify-center items-center w-8 h-8 rounded-full bg-pink-500 transition-transform duration-1000 hover:rotate-[360deg]"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="inline-flex justify-center items-center w-8 h-8 rounded-full bg-pink-500 transition-transform duration-1000 hover:rotate-[360deg]"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="inline-flex justify-center items-center w-8 h-8 rounded-full bg-pink-500 transition-transform duration-1000 hover:rotate-[360deg]"><i class="fa fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col hidden lg:block lg:w-4/12 lg:order-3">
+                <img src="./asset/img/sslcommerz.png" alt="" class="w-full">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Fontawesome JS -->
+<script src="https://kit.fontawesome.com/478b113ee2.js" crossorigin="anonymous"></script>
+<!-- Custom JS -->
+<script src="./asset/js/custom.js"></script>
+</body>
+</html>

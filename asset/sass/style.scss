@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* ===== Skeleton ===== */
+.skeleton {
+  width: fit-content;
+  padding: 1px;
+
+  &.skeleton-item {
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 48%, #e5e5e5 58%);
+      background-size: 200% 100%;
+      animation: skeleton 1s infinite linear reverse;
+
+      @keyframes skeleton {
+        0% {
+          background-position: -100% 0;
+        } 100% {
+            background-position: 100% 0;
+          }
+      }
+    }
+  }
+}
+
+.dark {
+  .dark\:skeleton-item {
+    &:before {
+      background: linear-gradient(120deg, #303946 38%, #363d46 48%, #363d46 58%, #303946 68%);
+      background-size: 200% 100%;
+    }
+  }
+}
+
+/* ===== Hero ===== */
+.hero {
+  .swiper-pagination-bullet {
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    background-clip: padding-box;
+    opacity: 0.5;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-radius: 0;
+    box-sizing: content-box;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+}
+
+/* ===== Course Information ===== */
+.ci {
+  .tab {
+    .title {
+      &.active {
+        color: #ec4899;
+
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 8px;
+          border-radius: 10px;
+          background-color: #ec4899;
+        }
+      }
+    }
+  }
+}

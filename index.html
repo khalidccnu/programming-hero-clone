@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Social Media -->
+    <meta property="og:title" content="Programming Hero">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="./asset/img/social.jpg">
+    <meta property="og:image:alt" content="Programming Hero">
+    <meta property="og:url" content="https://projects.khalidmahmud.me/programming-hero-clone">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Title -->
+    <title>Programming Hero</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./asset/img/favicon.ico" type="image/x-icon">
+    <!-- Swiper Slider CSS -->
+    <link rel="stylesheet" href="./asset/css/swiper-bundle.min.css">
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="./asset/tailwind/output.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./asset/css/style.css">
+</head>
+<body class="flex flex-col min-h-screen font-body dark:bg-slate-900" onload="preloader()">
+<!-- Preloader -->
+<div class="fixed w-full h-screen bg-[#ede9df] bg-[url('../img/preloader.gif')] bg-no-repeat bg-center bg-[length:_24rem] z-[999] transition-transform duration-500" id="preloader"></div>
+
+<!-- Header -->
+<header class="fixed w-full z-50 transition-transform duration-500">
+    <nav class="py-6">
+        <div class="container flex flex-wrap md:items-center">
+            <a href="./" class="w-1/2 md:w-auto">
+                <img src="./asset/img/logo.png" alt="" class="h-[30px]">
+            </a>
+            <div class="w-[calc(50%_-_2.8rem)] md:hidden text-end">
+                <button type="button" class="text-white hover:text-pink-500" onclick="navbar_toggle('navbar-collapse')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path id="menu" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex ml-auto md:ml-2" id="tm-switch">
+                <label class="relative w-10 h-6">
+                    <input type="checkbox" class="w-0 h-0 opacity-0 peer">
+                    <span class="absolute inset-0 bg-white rounded-2xl cursor-pointer transition-[background-color] duration-500 before:content-[''] before:absolute before:left-1 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:rounded-full before:bg-[linear-gradient(40deg,_#ff0080,_#ff8c00_70%)] before:transition-all before:duration-500 peer-checked:bg-slate-700 peer-checked:before:left-[calc(100%_-_1.3rem)] peer-checked:before:bg-none peer-checked:before:bg-slate-700 peer-checked:before:shadow-[inset_-3px_-2px_5px_-8px_#8983f7,_inset_-10px_-3px_0_0_#a3dafb]"></span>
+                </label>
+            </div>
+            <div class="hidden w-full md:w-auto md:flex flex-col md:flex-row md:ml-auto text-sm md:space-x-6 space-y-4 md:space-y-0 mt-8 md:mt-0" id="navbar-collapse">
+                <ul class="flex flex-col items-center md:flex-row md:space-x-6 space-y-4 md:space-y-0">
+                    <li class="text-center"><a href="#" class="capitalize text-white hover:text-pink-500">about us</a></li>
+                    <li class="text-center"><a href="#" class="capitalize text-white hover:text-pink-500">blog</a></li>
+                    <li class="text-center"><a href="#" class="capitalize text-white hover:text-pink-500">success</a></li>
+                    <li class="w-fit">
+                        <a href="#" class="relative text-white hover:text-pink-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                            <span class="absolute top-[12px] left-[15px] w-[14px] h-[14px] inline-flex justify-center items-center bg-[#ffda45] rounded-lg text-[75%] font-bold">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="space-x-2 text-center">
+                    <button type="button" class="login-btn border border-solid border-white rounded-[52px] px-4 py-2 hover:bg-white text-white hover:text-[#6047ec] capitalize transition" onclick="window.location.href='login'">login</button>
+                    <button type="button" class="bg-[linear-gradient(335.64deg,_#ff589b_-19.22%,_#ff136f_118.87%)] hover:bg-[linear-gradient(300.64deg,_#ff136f_118.87%,_#ff589b_-19.22%)] rounded-[52px] px-4 py-2 text-white capitalize" onclick="window.location.href='register'">register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero bg-[linear-gradient(107.07deg,_#684efb_-6.64%,_#5a00dd_89.11%)] dark:bg-none py-12">
+    <div class="container">
+        <div class="swiper hero-swiper pt-20 pb-10 text-white">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="row flex flex-wrap md:items-center">
+                        <div class="col w-full md:w-[60%] mb-12 md:mb-0">
+                            <h2 class="font-medium md:font-bold text-lg md:text-4xl leading-8 md:leading-[60px]">Learn Effectively that will take you towards your goal.</h2>
+                            <p class="my-12 text-base">ভিডিও কনটেন্ট বা কোর্স অনেকভাবেই ম্যানেজ করতে পারবে। কিন্তু সেটাকে ধরে ধরে ইন্টার্ন/ফুলটাইম চাকরি পর্যন্ত নিয়ে যাওয়ার জন্য একটা ইফেক্টিভ এবং এনজয়েবল লার্নিং এনভায়রনমেন্ট শুধু এই কোর্সেই পাবে।</p>
+                            <button type="button" class="btn-primary capitalize">enroll now</button>
+                        </div>
+                        <div class="col w-full md:w-[40%]">
+                            <img src="./asset/img/slider/hs-1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="row flex flex-wrap md:items-center">
+                        <div class="col w-full md:w-[60%] mb-12 md:mb-0">
+                            <h2 class="font-medium md:font-bold text-lg md:text-4xl leading-8 md:leading-[60px]">Complete Web Development Course with Jhankar Mahbub.</h2>
+                            <p class="my-12 text-base">একদম জিরো থেকে, কোন প্রকার পূর্ব অভিজ্ঞতা ছাড়াই একজন প্রফেশনাল ওয়েব ডেভেলপার হওয়ার জন্য যা যা লাগবে তার সবকিছুই সহজ করে গিলিয়ে খাওয়ানো হবে এই কোর্সে।</p>
+                            <button type="button" class="btn-primary capitalize">enroll now</button>
+                        </div>
+                        <div class="col w-full md:w-[40%]">
+                            <img src="./asset/img/slider/hs-2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="row flex flex-wrap md:items-center">
+                        <div class="col w-full md:w-[60%] mb-12 md:mb-0">
+                            <h2 class="font-medium md:font-bold text-lg md:text-4xl leading-8 md:leading-[60px]">Build 12 professional projects while learning.</h2>
+                            <p class="my-12 text-base">কোর্সের অংশ হিসেবে হাতে কলমে নতুন ১২ টা প্রজেক্ট (এসাইনমেন্ট) করবে তুমি। আমরা তোমার প্রজেক্ট এর ফিডব্যাক দিবো। মার্কস দিবো। যাতে প্রফেশনাল ওয়েবসাইট বানিয়েই চাকরির ইন্টারভিউতে যেতে পারো। 💪</p>
+                            <button type="button" class="btn-primary capitalize">enroll now</button>
+                        </div>
+                        <div class="col w-full md:w-[40%]">
+                            <img src="./asset/img/slider/hs-3.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="row flex flex-wrap md:items-center">
+                        <div class="col w-full md:w-[60%] mb-12 md:mb-0">
+                            <h2 class="font-medium md:font-bold text-lg md:text-4xl leading-8 md:leading-[60px]">Got stuck? We will always be there for you.</h2>
+                            <p class="my-12 text-base">২৪ ঘন্টার মধ্যে কোর্স রিলেটেড সকল প্রশ্নের উত্তর দেয়ার জন্য 16 জন প্রফেশনাল ওয়েব ডেভেলপার স্ট্যান্ডবাই থাকে (ছুটির দিন বাদে)। প্রতিদিন তিনবার গুগল মিট এ স্ক্রিনশেয়ার করে সমস্যা সমাধান করতে পারবে। 🥊</p>
+                            <button type="button" class="btn-primary capitalize">enroll now</button>
+                        </div>
+                        <div class="col w-full md:w-[40%]">
+                            <img src="./asset/img/slider/hs-4.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="row flex flex-wrap md:items-center">
+                        <div class="col w-full md:w-[60%] mb-12 md:mb-0">
+                            <h2 class="font-medium md:font-bold text-lg md:text-4xl leading-8 md:leading-[60px]">We will ensure our graduates are world-class web developer.</h2>
+                            <p class="my-12 text-base">প্রত্যেক ভিডিও শেষে প্রশ্ন থাকবে। মডিউল শেষে ফাইনাল কুইজ থাকবে। প্রত্যেক মাইলস্টোন এ টেক এওয়ে এসাইনমেন্ট, প্রাকটিস প্রজেক্ট থাকবে। হোমওয়ার্ক প্রফেশনাল লেভেলের না হলে, ফিডব্যাক দেয়া হবে।</p>
+                            <button type="button" class="btn-primary capitalize">enroll now</button>
+                        </div>
+                        <div class="col w-full md:w-[40%]">
+                            <img src="./asset/img/slider/hs-5.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="row flex flex-wrap md:items-center">
+                        <div class="col w-full md:w-[60%] mb-12 md:mb-0">
+                            <h2 class="font-medium md:font-bold text-lg md:text-4xl leading-8 md:leading-[60px]">Master everything you need to become a web developer.</h2>
+                            <p class="my-12 text-base">ফ্রন্টএন্ড (HTML, CSS, JavaScript, ES6, bootstrap, React, charting), ব্যাকএন্ড (node, express, API), ডাটাবেজ (mongodb), ক্রোম ডেভ টুল, হোস্টিং, গিটহাব, ইন্টারভিউ প্রবলেম সলভিং - সবকিছু!</p>
+                            <button type="button" class="btn-primary capitalize">enroll now</button>
+                        </div>
+                        <div class="col w-full md:w-[40%]">
+                            <img src="./asset/img/slider/hs-6.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="row flex flex-wrap md:items-center">
+                        <div class="col w-full md:w-[60%] mb-12 md:mb-0">
+                            <h2 class="font-medium md:font-bold text-lg md:text-4xl leading-8 md:leading-[60px]">Start your dream today. Conquer the world.</h2>
+                            <p class="my-12 text-base">ভিডিও কনটেন্ট বা কোর্স অনেকভাবেই ম্যানেজ করতে পারবে। কিন্তু সেটাকে ধরে ধরে ইন্টার্ন/ফুলটাইম চাকরি পর্যন্ত নিয়ে যাওয়ার জন্য একটা ইফেক্টিভ এবং এনজয়েবল লার্নিং এনভায়রনমেন্ট শুধু এই কোর্সেই পাবে।</p>
+                            <button type="button" class="btn-primary capitalize">enroll now</button>
+                        </div>
+                        <div class="col w-full md:w-[40%]">
+                            <img src="./asset/img/slider/hs-7.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination hero-swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Notice -->
+<section class="notice dark:bg-slate-700">
+    <div class="container">
+        <div class="w-11/12 mx-auto -mt-14 px-10 pt-16 pb-8 rounded-3xl shadow-lg bg-white dark:bg-slate-600 relative z-10">
+            <h2 class="text-3xl lg:text-4xl font-bold text-center dark:text-white mb-5">পরবর্তী ব্যাচের সময় সূচি</h2>
+            <div class="row flex flex-wrap justify-center lg:justify-evenly space-y-2 lg:space-y-0 font-semibold dark:text-white my-6">
+                <div class="col w-fit lg:w-1/3 space-y-2">
+                    <h5 class="text-sm sm:text-lg">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(-45deg,_#5a00dd,_#684efb)] rounded text-xs text-white">
+                            <i class="fa fa-calendar-week"></i>
+                        </span>
+                        এনরোলমেন্ট শুরু: <strong>ডিসেম্বর ১০, ২০২২ (শনিবার)</strong>
+                    </h5>
+                    <h5 class="text-sm sm:text-lg">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(-45deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-bookmark"></i>
+                        </span>
+                        এনরোলমেন্ট শেষ: <strong>ডিসেম্বর ২৪, ২০২২ (শনিবার)</strong>
+                    </h5>
+                </div>
+                <div class="col w-fit lg:w-1/3 space-y-2">
+                    <h5 class="text-sm sm:text-lg">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(-45deg,_#ff9c35,_#ffd019)] rounded text-xs text-white">
+                            <i class="fa fa-bell"></i>
+                        </span>
+                        ব্যাচের ওরিয়েন্টশন: <strong>ডিসেম্বর ২৮, ২০২২ (বুধবার)</strong>
+                    </h5>
+                    <h5 class="text-sm sm:text-lg">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(-45deg,_#ff193f,_#ff35b4)] rounded text-xs text-white">
+                            <i class="fa fa-tv"></i>
+                        </span>
+                        ক্লাস শুরু: <strong>ডিসেম্বর ৩০, ২০২২ (শুক্রবার)</strong>
+                    </h5>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center lg:justify-between lg:items-center space-y-4 lg:space-y-0 bg-[linear-gradient(45deg,_#5a00dd,_#684efb)] dark:bg-none dark:bg-slate-700 px-4 py-3 rounded shadow text-white">
+                <h5 class="text-sm sm:text-lg font-semibold text-center lg:text-start">তুমি ৭ম ব্যাচে এনরোল করতে আগ্রহি হলে, ওয়েবসাইটে রেজিস্ট্রেশন করে রাখো</h5>
+                <button type="button" class="btn-primary capitalize">enroll now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Course Criteria -->
+<section class="cc dark:bg-slate-700 dark:text-white py-20">
+    <div class="container">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center mb-12">এই কোর্স থেকে কি কি শিখতে পারবে</h2>
+        <div class="row flex flex-wrap">
+            <div class="col w-full md:w-[38%] md:mr-auto">
+                <div class="dark:bg-slate-600 px-8 py-12 shadow rounded-2xl">
+                    <div class="relative">
+                        <img src="./asset/img/enroll.png" alt="" class="w-full rounded-2xl">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 cursor-pointer text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <ul class="flex flex-col xl:flex-row xl:justify-evenly space-y-2 xl:space-y-0 text-xs font-medium">
+                            <li class="dark:bg-slate-700 rounded-2xl shadow px-4 py-2"><i class="fa fa-video"></i> 775 Video</li>
+                            <li class="dark:bg-slate-700 rounded-2xl shadow px-4 py-2"><i class="fa fa-book-open"></i> 300 Quiz</li>
+                            <li class="dark:bg-slate-700 rounded-2xl shadow px-4 py-2"><i class="fa fa-edit"></i> 12 Assignment</li>
+                        </ul>
+                    </div>
+                    <h3 class="text-4xl font-light xl:text-center mt-8">৳ 5500</h3>
+                </div>
+            </div>
+            <div class="col w-full md:w-7/12 mt-10 md:mt-0">
+                <ul class="flex flex-wrap font-medium">
+                    <li class="w-full sm:w-[45%] mb-3 mr-auto">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>ফটাফট কয়েকটা ভিডিও দেখে HTML, CSS শিখে ফটাফট চমৎকার দুইটা ওয়েবসাইট বানিয়ে ফেলবে। এবং সেগুলার লিংক যেকারো সাথে শেয়ার করে ভাব পেটাতে পারবে।</span>
+                    </li>
+                    <li class="w-full sm:w-[45%] mb-3">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>বুটস্ট্রাপ (bootstrap) নামক পপুলার ফ্রেমওয়ার্ক এর খুঁটিনাটি ভাজা ভাজা করে ফেলবে। তারপর সেটা দিয়েও দুইটা ই-কমার্স ওয়েবসাইট বানিয়ে ফেলবে। কি মজা!</span>
+                    </li>
+                    <li class="w-full sm:w-[45%] mb-3 mr-auto">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>জাভাস্ক্রিপ্টের ছয়টা মেইন জিনিস, জাভাস্ক্রিপ্ট দিয়ে প্রবলেম সলভিং, ইন্টারভিউ এর প্রশ্ন-উত্তর। এমনকি ES6 দিয়ে তোমার নলেজকে যোগোপযোগী করে তুলবে।</span>
+                    </li>
+                    <li class="w-full sm:w-[45%] mb-3">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>জাভাস্ক্রিপ্ট দিয়ে ব্যাংকের deposit, withdraw এর লাইভ ক্যালকুলেশন থাকছে। তারপরই থাকছে ই-কমার্স সাইটের শপিং কার্টের হিসাব-নিকাশ করার সিস্টেম।</span>
+                    </li>
+                    <li class="w-full sm:w-[45%] mb-3 mr-auto">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>সার্ভার সম্পর্কে ধারণা, REST API কল করে JSON ডাটা লোড করা, node, mongodb (database), chrome devtool দিয়ে ডিবাগিং সম্পর্কে ধারণা দেয়া হবে।</span>
+                    </li>
+                    <li class="w-full sm:w-[45%] mb-3">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>কোর্সের সবচেয়ে গুরুত্বপূর্ণ দিক হচ্ছে দুনিয়ার সবচেয়ে বেশি চাকরি যে জাভাস্ক্রিপ্ট ফ্রেমওয়ার্ক এ (React), সেটা দিয়ে পরিপূৰ্ণ একটা ওয়েবসাইট একদম শূন্য থেকে শেষ পর্যন্ত দেখানো হয়েছে।</span>
+                    </li>
+                    <li class="w-full sm:w-[45%] mb-3 mr-auto">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>React দিয়ে সম্পূর্ণ প্রফেশনাল ওয়েবসাইট। ডাটাবেজ, সার্ভার সাইড, হোস্টিং, পেমেন্ট সিস্টেম, লগইন, রাউটিং দিয়ে ১০০% ক্লায়েন্ট-রেডি ওয়েবসাইট বানিয়ে দেখানো হবে।</span>
+                    </li>
+                    <li class="w-full sm:w-[45%] mb-3">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>কাজের প্রয়োজনে Firebase Authentication, TypeScript, Sass, Tailwind, গুগল ম্যাপ api সহ এমন আরো অসংখ্য প্রয়োজনীয় টুলস এর সাথে পরিচয় করিয়ে দেয়া হবে।</span>
+                    </li>
+                    <li class="w-full sm:w-[45%] mb-3 sm:mb-0 mr-auto">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>সর্বমোট ১২টা প্রজেক্ট তুমি নিজে করবে। আমাদের হেল্প নিয়ে। এছাড়াও ৫টা ওয়েবসাইট আমরা দেখিয়ে দিবো। যেগুলা করতে করতে তুমি নিজের অজান্তেই পরিপূর্ন ওয়েব ডেভেলপার হয়ে উঠবে।</span>
+                    </li>
+                    <li class="w-full sm:w-[45%]">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-[linear-gradient(75deg,_#fc5e51,_#f59e75)] rounded text-xs text-white">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <span>এনরোল করার ১৫ সপ্তাহের মধ্যে পুরা কোর্স সিরিয়াসলি কমপ্লিট কারীদের নিয়ে আমরা তৈরি করবো Super Charged Interviewee Club (SCIC) সিক্রেট ক্লাব। যাদের স্পেশাল ইন্টারভিউ ট্রেনিং দিয়ে রেজুমি পাঠিয়ে দিবো বিভিন্ন কোম্পানিতে ইন্টার্ন বা ডেভেলপার হিসেবে চাকরি পাওয়ার জন্য।</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Course Information -->
+<section class="ci bg-gray-100 dark:bg-transparent py-20">
+    <div class="container">
+        <div class="tab flex justify-center max-w-[520px] mx-auto bg-white dark:bg-slate-700 pt-4 space-x-4 shadow-lg rounded-xl font-medium text-center">
+            <div class="title relative w-2/5 text-gray-600 dark:text-white cursor-pointer transition-colors duration-500 hover:text-pink-500" onclick="document.getElementById('tab-1').click()">
+                <span class="text-4xl"><i class="fa fa-star"></i></span>
+                <h5 class="text-base my-3">এই কোর্সের বিশেষত্ব কি?</h5>
+                <input type="radio" name="tab" class="hidden" id="tab-1" checked onclick="ci_tab()">
+            </div>
+            <div class="title relative w-2/5 text-gray-600 dark:text-white cursor-pointer transition-colors duration-500 hover:text-pink-500" onclick="document.getElementById('tab-2').click()">
+                <span class="text-4xl"><i class="fa fa-edit"></i></span>
+                <h5 class="text-base my-3">এই কোর্স কিভাবে চলবে?</h5>
+                <input type="radio" name="tab" class="hidden" id="tab-2" onclick="ci_tab()">
+            </div>
+        </div>
+        <div class="tab-content mt-16">
+            <div class="hidden">
+                <div class="row flex flex-wrap">
+                    <div class="col w-full md:w-1/2 lg:w-1/4 p-2">
+                        <div class="card bg-white dark:bg-slate-700 px-3 py-5 shadow rounded">
+                            <div class="skeleton skeleton-item dark:skeleton-item">
+                                <img src="./asset/img/ci-1.png" alt="" class="w-16">
+                            </div>
+                            <div class="dark:text-white mt-3">
+                                <h5 class="skeleton skeleton-item dark:skeleton-item text-base font-semibold mb-1">এইটা কমপ্লিট ওয়েব ডেভেলপমেন্ট এর কোর্স:</h5>
+                                <input type="checkbox" class="hidden peer" id="tc-1">
+                                <p class="skeleton skeleton-item dark:skeleton-item max-h-[42px] md:max-h-[62px] peer-checked:max-h-96 overflow-hidden text-sm mb-3 transition-[max-height] duration-500">শূন্য থেকে একজন জুনিয়র ওয়েব ডেভেলপার হিসেবে চাকরি পাওয়ার জন্য যা যা লাগে তার সবকিছুই ধরে ধরে শিখানো হয়েছে এই কোর্সে। সো, এই কোর্স ভালোভাবে ফিনিশ করলে ওয়েব ডেভেলপমেন্ট সম্পর্কে আর কোথাও কোন কোর্স না করেই ইন্টার্ন বা চাকরির চেষ্টা শুরু করে দিতে পারবে।</p>
+                                <span class="skeleton skeleton-item dark:skeleton-item font-medium text-orange-500 cursor-pointer peer-checked:hidden" onclick="document.getElementById('tc-1').click()">আরও দেখুন</span>
+                                <span class="skeleton skeleton-item dark:skeleton-item hidden font-medium text-orange-500 cursor-pointer peer-checked:inline" onclick="document.getElementById('tc-1').click()">অল্প দেখুন</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 lg:w-1/4 p-2">
+                        <div class="card bg-white dark:bg-slate-700 px-3 py-5 shadow rounded">
+                            <div class="skeleton skeleton-item dark:skeleton-item">
+                                <img src="./asset/img/ci-2.png" alt="" class="w-16">
+                            </div>
+                            <div class="dark:text-white mt-3">
+                                <h5 class="skeleton skeleton-item dark:skeleton-item text-base font-semibold mb-1">আনলিমিটেড সাপোর্ট:</h5>
+                                <input type="checkbox" class="hidden peer" id="tc-2">
+                                <p class="skeleton skeleton-item dark:skeleton-item max-h-[42px] md:max-h-[62px] peer-checked:max-h-96 overflow-hidden text-sm mb-3 transition-[max-height] duration-500">কোর্স চলাকালীন সময়ে ২৪ ঘন্টার মধ্যে তোমার যেকোন প্রশ্নের উত্তর দেয়া হবে (ছুটির দিন বাদে)। পেঁচগি মার্কা কোন প্রবলেম হলে প্রতিদিন ৩ বেলা গুগল মিটে এসে তোমার স্কিন শেয়ার করে প্রবলেম সলভ করা হবে। আর কোর্স শেষ হয়ে গেলে (৩মাস পরেও ) তোমাকে লুজ সাপোর্ট দেয়া হবে।</p>
+                                <span class="skeleton skeleton-item dark:skeleton-item font-medium text-orange-500 cursor-pointer peer-checked:hidden" onclick="document.getElementById('tc-2').click()">আরও দেখুন</span>
+                                <span class="skeleton skeleton-item dark:skeleton-item hidden font-medium text-orange-500 cursor-pointer peer-checked:inline" onclick="document.getElementById('tc-2').click()">অল্প দেখুন</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 lg:w-1/4 p-2">
+                        <div class="card bg-white dark:bg-slate-700 px-3 py-5 shadow rounded">
+                            <div class="skeleton skeleton-item dark:skeleton-item">
+                                <img src="./asset/img/ci-3.png" alt="" class="w-16">
+                            </div>
+                            <div class="dark:text-white mt-3">
+                                <h5 class="skeleton skeleton-item dark:skeleton-item text-base font-semibold mb-1">স্পেশাল ইন্টারভিউ প্রিপারেশন গ্রূপ:</h5>
+                                <input type="checkbox" class="hidden peer" id="tc-3">
+                                <p class="skeleton skeleton-item dark:skeleton-item max-h-[42px] md:max-h-[62px] peer-checked:max-h-96 overflow-hidden text-sm mb-3 transition-[max-height] duration-500">যারা ডেইলি কাজ করবে, প্রতিদিন ৬ থেকে ৮ ঘন্টা সময় দিবে, জানপ্রাণ দিয়ে সিরিয়াসভাবে কোর্স নির্দিষ্ট সময়ের মধ্যে ফিনিশ করবে। তাদের নিয়ে তৈরি করা SCIC (Super Charged Interviewee Club)। এইটা ৪ থেকে ৬ সপ্তাহের স্পেশাল ট্রেনিং। যেটার জন্য আলাদা কোন ফি নাই। একটাই যোগ্যতা: সিরিয়াস হার্ডওয়ার্ক করে নিদৃস্ট সময়ের মধ্যে মেইন কোর্স ফিনিশ করা।</p>
+                                <span class="skeleton skeleton-item dark:skeleton-item font-medium text-orange-500 cursor-pointer peer-checked:hidden" onclick="document.getElementById('tc-3').click()">আরও দেখুন</span>
+                                <span class="skeleton skeleton-item dark:skeleton-item hidden font-medium text-orange-500 cursor-pointer peer-checked:inline" onclick="document.getElementById('tc-3').click()">অল্প দেখুন</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 lg:w-1/4 p-2">
+                        <div class="card bg-white dark:bg-slate-700 px-3 py-5 shadow rounded">
+                            <div class="skeleton skeleton-item dark:skeleton-item">
+                                <img src="./asset/img/ci-4.png" alt="" class="w-16">
+                            </div>
+                            <div class="dark:text-white mt-3">
+                                <h5 class="skeleton skeleton-item dark:skeleton-item text-base font-semibold mb-1">জব প্লেসমেন্ট কোচ:</h5>
+                                <input type="checkbox" class="hidden peer" id="tc-4">
+                                <p class="skeleton skeleton-item dark:skeleton-item max-h-[42px] md:max-h-[62px] peer-checked:max-h-96 overflow-hidden text-sm mb-3 transition-[max-height] duration-500">যারা SCIC তে সুযোগ পাবে এবং সেটা ঠিক মতো শেষ করবে আরো ৪ থেকে ৬ সপ্তাহ লেগে থাকবে। তাদের আরো পার্সোনালাইজড ট্রেনিং দিয়ে তাদের সিভি/রেজুমি আমাদের জব প্লেসমেন্ট টিম পাঠিয়ে দিবে বিভিন্ন কোম্পানিতে। কোম্পানি হায়ার করবে, কি করবে না: সেটা তাদের সিদ্ধান্ত। তোমার কাজ হচ্ছে লেগে থাকা আর আমাদের কাজ হচ্ছে সাপোর্ট দিয়ে সিভি পৌঁছে দেয়া। সো, যতক্ষণ পর্যন্ত তুমি লেগে আছো। আমরা আছি তোমার সাথে।</p>
+                                <span class="skeleton skeleton-item dark:skeleton-item font-medium text-orange-500 cursor-pointer peer-checked:hidden" onclick="document.getElementById('tc-4').click()">আরও দেখুন</span>
+                                <span class="skeleton skeleton-item dark:skeleton-item hidden font-medium text-orange-500 cursor-pointer peer-checked:inline" onclick="document.getElementById('tc-4').click()">অল্প দেখুন</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 lg:w-1/4 p-2">
+                        <div class="card bg-white dark:bg-slate-700 px-3 py-5 shadow rounded">
+                            <div class="skeleton skeleton-item dark:skeleton-item">
+                                <img src="./asset/img/ci-5.png" alt="" class="w-16">
+                            </div>
+                            <div class="dark:text-white mt-3">
+                                <h5 class="skeleton skeleton-item dark:skeleton-item text-base font-semibold mb-1">লাইভ কনচেপচুয়াল সেশন:</h5>
+                                <input type="checkbox" class="hidden peer" id="tc-5">
+                                <p class="skeleton skeleton-item dark:skeleton-item max-h-[42px] md:max-h-[62px] peer-checked:max-h-96 overflow-hidden text-sm mb-3 transition-[max-height] duration-500">শিখতে দুই-একটা কনসেপ্ট প্রথম ধাক্কায় সবার কাছে ক্লিয়ার নাও হতে পারে। এইটা খুবই স্বাভাবিক। এইটা নিয়ে মাথার চুল ছেঁড়ার কিচ্ছু নাই। কারণ প্রত্যেক মাইলস্টোন এ একটা বা দুইটা করে লাইভ কনসেপচুয়াল সেশন থাকবে। সেখানে নতুন নতুন প্রজেক্ট এর মাধ্যমে মেইন মেইন কনসেপ্টগুলো অল ক্লিয়ার শ্যাম্পুর চাইতেও ভালো করে ক্লিয়ার করে দেয়া হবে।</p>
+                                <span class="skeleton skeleton-item dark:skeleton-item font-medium text-orange-500 cursor-pointer peer-checked:hidden" onclick="document.getElementById('tc-5').click()">আরও দেখুন</span>
+                                <span class="skeleton skeleton-item dark:skeleton-item hidden font-medium text-orange-500 cursor-pointer peer-checked:inline" onclick="document.getElementById('tc-5').click()">অল্প দেখুন</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 lg:w-1/4 p-2">
+                        <div class="card bg-white dark:bg-slate-700 px-3 py-5 shadow rounded">
+                            <div class="skeleton skeleton-item dark:skeleton-item">
+                                <img src="./asset/img/ci-6.png" alt="" class="w-16">
+                            </div>
+                            <div class="dark:text-white mt-3">
+                                <h5 class="skeleton skeleton-item dark:skeleton-item text-base font-semibold mb-1">Advance ক্রাশ কোর্স (ACC):</h5>
+                                <input type="checkbox" class="hidden peer" id="tc-6">
+                                <p class="skeleton skeleton-item dark:skeleton-item max-h-[42px] md:max-h-[62px] peer-checked:max-h-96 overflow-hidden text-sm mb-3 transition-[max-height] duration-500">প্রোগ্রামিং হিরোতে তুমি জাস্ট একটা কোর্স এ এনরোল করতেছো না। বরং লাইফ লং ওয়েব ডেভেলপমেন্ট শেখার মিশনে জয়েন করতেছো। সেজন্যই আমাদের মেইন কোর্স ফিনিশ করলে তুমি Advance ক্রাশ কোর্স (ACC) এ সুযোগ পাবে। সেখানে Node, Mongodb, Next JS ছাড়াও আরো অনেক নতুন নতুন Advance টপিক ইন ডেপ্থ শেখানো হবে। সেইসব Advance কোর্স এর জন্য বাড়তি কোন ফি দিতে হবে না। শুধু মেইন কোর্স ফিনিশ করতে হবে।</p>
+                                <span class="skeleton skeleton-item dark:skeleton-item font-medium text-orange-500 cursor-pointer peer-checked:hidden" onclick="document.getElementById('tc-6').click()">আরও দেখুন</span>
+                                <span class="skeleton skeleton-item dark:skeleton-item hidden font-medium text-orange-500 cursor-pointer peer-checked:inline" onclick="document.getElementById('tc-6').click()">অল্প দেখুন</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 lg:w-1/4 p-2">
+                        <div class="card bg-white dark:bg-slate-700 px-3 py-5 shadow rounded">
+                            <div class="skeleton skeleton-item dark:skeleton-item">
+                                <img src="./asset/img/ci-7.png" alt="" class="w-16">
+                            </div>
+                            <div class="dark:text-white mt-3">
+                                <h5 class="skeleton skeleton-item dark:skeleton-item text-base font-semibold mb-1">অফলাইন ভিডিও দেখার সুযোগ:</h5>
+                                <input type="checkbox" class="hidden peer" id="tc-7">
+                                <p class="skeleton skeleton-item dark:skeleton-item max-h-[42px] md:max-h-[62px] peer-checked:max-h-96 overflow-hidden text-sm mb-3 transition-[max-height] duration-500">তোমার ব্রডব্যান্ড নাই! মোবাইল ডাটা বা এমবি কিনে ভিডিও দেখতে হয়? একই ভিডিও বারবার দেখার জন্য যেন ইন্টারনেট খরচ করা লাগে? প্যারা নেয়ার কিছু নাই। আমাদের এন্ড্রয়েড এপ এর মাধ্যমে কোর্সের ভিডিও অফলাইন সেইভ করে বারবার দেখতে পারবে। বাড়তি কোন ইন্টারনেট খরচ ছাড়াই।</p>
+                                <span class="skeleton skeleton-item dark:skeleton-item font-medium text-orange-500 cursor-pointer peer-checked:hidden" onclick="document.getElementById('tc-7').click()">আরও দেখুন</span>
+                                <span class="skeleton skeleton-item dark:skeleton-item hidden font-medium text-orange-500 cursor-pointer peer-checked:inline" onclick="document.getElementById('tc-7').click()">অল্প দেখুন</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 lg:w-1/4 p-2">
+                        <div class="card bg-white dark:bg-slate-700 px-3 py-5 shadow rounded">
+                            <div class="skeleton skeleton-item dark:skeleton-item">
+                                <img src="./asset/img/ci-8.png" alt="" class="w-16">
+                            </div>
+                            <div class="dark:text-white mt-3">
+                                <h5 class="skeleton skeleton-item dark:skeleton-item text-base font-semibold mb-1">ইন্টারন্যাশনাল জব প্লেসমেন্ট:</h5>
+                                <input type="checkbox" class="hidden peer" id="tc-8">
+                                <p class="skeleton skeleton-item dark:skeleton-item max-h-[42px] md:max-h-[62px] peer-checked:max-h-96 overflow-hidden text-sm mb-3 transition-[max-height] duration-500">গ্লোবালাইজেশন এর যুগে তোমার জব প্লেসমেন্ট এর টার্গেট কেন শুধু বাংলাদেশ কেন্দ্রিক হবে? বরং দুনিয়ার যেকোন দেশে চাকরি/ইন্টার্ন পাওয়ার মতো লেভেলের হবে। সেজন্যই আমাদের SCIC এবং জব প্লেসমেন্ট টিম এর ফোকাস হচ্ছে তোমাকে দেশে বা দেশের বাইরের কোম্পানিতে ইন্টার্ন/জব এর জন্য রেডি করা। তোমার সিভি দেশে এবং দেশের কোম্পানিতে ফরওয়ার্ড করা।</p>
+                                <span class="skeleton skeleton-item dark:skeleton-item font-medium text-orange-500 cursor-pointer peer-checked:hidden" onclick="document.getElementById('tc-8').click()">আরও দেখুন</span>
+                                <span class="skeleton skeleton-item dark:skeleton-item hidden font-medium text-orange-500 cursor-pointer peer-checked:inline" onclick="document.getElementById('tc-8').click()">অল্প দেখুন</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden">
+                <div class="row flex flex-wrap">
+                    <div class="col w-full md:w-1/2 p-2">
+                        <div class="card flex flex-col sm:flex-row items-center bg-white dark:bg-slate-700 px-6 py-5 shadow rounded">
+                            <h5 class="sm:w-1/4 text-8xl font-bold text-gray-400 text-center">১</h5>
+                            <p class="sm:w-3/4 text-sm dark:text-white">প্রতিদিন রাত ১০.০০ এর সময় (বাংলাদেশ সময়) একটা মডিউল রিলিজ দেয়া হবে। তোমার কাজ হবে ২৪ ঘন্টার মধ্যে সব ভিডিও দেখে শেষ করে ফেলা। মোটামুটি ১.৫ থেকে ২ ঘন্টার মতো ভিডিও থাকবে।</p>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 p-2">
+                        <div class="card flex flex-col sm:flex-row items-center bg-white dark:bg-slate-700 px-6 py-5 shadow rounded">
+                            <h5 class="sm:w-1/4 text-8xl font-bold text-gray-400 text-center">২</h5>
+                            <p class="sm:w-3/4 text-sm dark:text-white">তবে শুধু ভিডিও দেখে গেলে কাজ হবে না। ভিডিও এর কোন টপিক বুঝতে না পারলে গুগল বা ইউটিউবে সার্চ দিয়ে আরো অন্য টিউটোরিয়াল দেখতে হবে। প্রত্যেক ভিডিও শেষে একাধিক প্রশ্ন থাকবে।</p>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 p-2">
+                        <div class="card flex flex-col sm:flex-row items-center bg-white dark:bg-slate-700 px-6 py-5 shadow rounded">
+                            <h5 class="sm:w-1/4 text-8xl font-bold text-gray-400 text-center">৩</h5>
+                            <p class="sm:w-3/4 text-sm dark:text-white">কোথাও না বুঝলে বা আটকে গেলে। আমাদের ফেইসবুক গরূপে প্রশ্ন করতে পারবে। তোমার যেকোন প্রশ্নের উত্তর কোর্স চলাকালীন সময়ে ২৪ ঘন্টার মধ্যে উত্তর দেয়া হবে।</p>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 p-2">
+                        <div class="card flex flex-col sm:flex-row items-center bg-white dark:bg-slate-700 px-6 py-5 shadow rounded">
+                            <h5 class="sm:w-1/4 text-8xl font-bold text-gray-400 text-center">৪</h5>
+                            <p class="sm:w-3/4 text-sm dark:text-white">কোর্স এক টানা ২০ সপ্তাহ চলবে। কোন ডেটিংয়ের ব্রেক, সূর্য না উঠার ব্রেক, বা পাশের বাড়ির ট্যাংকি লিক হয়ে যাওয়ার জন্য কোন গ্যাপ বা বাড়তি সময় দেয়া হবে না।</p>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 p-2">
+                        <div class="card flex flex-col sm:flex-row items-center bg-white dark:bg-slate-700 px-6 py-5 shadow rounded">
+                            <h5 class="sm:w-1/4 text-8xl font-bold text-gray-400 text-center">৫</h5>
+                            <p class="sm:w-3/4 text-sm dark:text-white">যারা নিদৃস্ট সময়ের মধ্যে ডেডিকেটেড ভাবে লেগে থেকে কোর্স শেষ করবে। এসাইনমেন্ট সঠিক সময়ে সাবমিট করবে তাদের থেকে SCIC এর জন্য সিলেক্ট করা হবে। SCIC এর জন্য হার্ডওয়ার্ক ছাড়া আলাদা কোন ফি নেই।</p>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 p-2">
+                        <div class="card flex flex-col sm:flex-row items-center bg-white dark:bg-slate-700 px-6 py-5 shadow rounded">
+                            <h5 class="sm:w-1/4 text-8xl font-bold text-gray-400 text-center">৬</h5>
+                            <p class="sm:w-3/4 text-sm dark:text-white">আমাদের কোর্স প্রি-রেকর্ডেড (ভিডিও আগে থেকে রেকর্ড করা থাকবে)। অর্থাৎ লাইভ ক্লাস হবে না। তাই রাত ১০.০০ এর পরে যেকোন সময়ের মধ্যে ভিডিও দেখে নিলেই চলবে। প্রতিদিন গড়ে ৬ থেকে ৮ ঘন্টা সময় দিতে হবে। মিনিমাম ৪ থেকে ৬ ঘন্টা সময় দিতেই হবে।</p>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 p-2">
+                        <div class="card flex flex-col sm:flex-row items-center bg-white dark:bg-slate-700 px-6 py-5 shadow rounded">
+                            <h5 class="sm:w-1/4 text-8xl font-bold text-gray-400 text-center">৭</h5>
+                            <p class="sm:w-3/4 text-sm dark:text-white">পাঁচ ছয়টা মডিউল পরে যখন এসাইনমেন্ট থাকবে তখন এসাইনমেন্ট এর সাইজ অনুসারে তোমাকে এক দিন, দুই দিন বা তিন দিন সময় দেয়া হবে। এসাইনমেন্ট সঠিক সময়ে জমা দিলে ৬০ মার্কস। একদিন দেরি করলে ৫০ মার্কস। তার চাইতেও বেশি সময় নিলে ৩০ মার্কস।</p>
+                        </div>
+                    </div>
+                    <div class="col w-full md:w-1/2 p-2">
+                        <div class="card flex flex-col sm:flex-row items-center bg-white dark:bg-slate-700 px-6 py-5 shadow rounded">
+                            <h5 class="sm:w-1/4 text-8xl font-bold text-gray-400 text-center">৮</h5>
+                            <p class="sm:w-3/4 text-sm dark:text-white">দরকার হলে মাঝে মধ্যে ফেইসবুক গরূপে লাইভ এসে প্রশ্নের উত্তর বা কনসেপ্ট ব্যাখ্যা করা হবে। প্রয়োজনে কোর্সের মধ্যে নতুন মডিউল যোগ করা হবে। যাতে তুমি পরিপূর্ন ওয়েব ডেভেলপার হয়ে উঠো এই একটা মাত্র কোর্স থেকে।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq bg-[linear-gradient(107.07deg,_#684efb_-6.64%,_#5a00dd_89.11%)] dark:bg-none dark:bg-slate-700 py-20 text-white">
+    <div class="container">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center mb-12">কোর্স সম্পর্কিত সাধারণ জিজ্ঞাসা</h2>
+        <div class="row flex flex-wrap md:items-center">
+            <div class="col w-full md:w-6/12 md:mr-auto space-y-4">
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-1">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-1').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">এই কোর্স কাদের জন্য?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">যারা ওয়েব ডেভেলপার হতে চায়। যারা একদম শূন্য থেকে শুরু করে শেষ পর্যন্ত ওয়েব ডেভেলপমেন্ট শিখে তারপর ওয়েব ডেভেলপার হিসেবে কোন সফটওয়্যার কোম্পানিতে চাকরি করতে চায়, তাদের জন্য। যারা প্রোগ্রামিং বা ওয়েব ডেভেলপমেন্ট সম্পর্কে তেমন কিছুই জানে না, তাদের জন্য। এমনকি যারা চার বছর CSE পড়েও কিভাবে কি করবে দিশা করতে পারতেছে না, গুছিয়ে তেমন কিছু শিখেনি, তারাও এই কোর্স থেকে কমপ্লিট ওয়েব ডেভেলপমেন্ট শিখে চাকরিতে এপ্লাই করতে পারবে। 😀</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-2">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-2').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">এই কোর্স শুরু করার আগে আমার কী কী পূর্ব অভিজ্ঞতা থাকা দরকার?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">আমরা যেহেতু একদম শূন্য থেকে শেখাচ্ছি। তাই তোমাকে আগে থেকে তেমন কিছু জানা লাগবে না। তবে তোমার হাতে যদি সময় থাকে তাহলে এই তিনটা কাজ করে ফেলতে পারো। ১. ভিডিও দেখে দেখে জিনিসগুলো মাথায় ঢুকানোর জন্য একটুখানি ব্রেনের খালি জায়গা রাখতে হবে। ২. কোর্স এ জয়েন করলেই অটো ওয়েব ডেভেলপার হয়ে যাবে না। হার্ডওয়ার্ক করার, লেগে থাকার মেন্টালিটি থাকতে হবে। ৩. কোথাও আটকে গেলে হেল্প চাওয়ার মেন্টালিটি এবং লেগে থাকার ইচ্ছা রাখতে হবে।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-3">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-3').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">কোর্সের মধ্যে কী কী আছে?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">সেটা কোর্স কারিকুলাম দেখলেই বুঝতে পারবে। তবে ছোট করে বললে, বলা যায়: বর্তমান সময়ে একজন সিরিয়াস ওয়েব ডেভেলপার হওয়ার জন্য যা যা লাগে, তার সবই আছে এই কোর্সে। একদম ছোট করে বললে ধরো HTML, CSS থেকে শুরু করে bootstrap, JavaScript, Git, ES6, REST API, server, JSON তো আছেই। তার সাথে সাথে আছে বর্তমান সময়ে সবচেয়ে বেশি চাকরি যে ফ্রেমওয়ার্ক সেই React, advanced React দিয়ে কমপ্লিট ওয়েবসাইট বানানোর সিস্টেম আছে। বাড়তি হিসেবে আছে node, database (mongodb), debug, problem solving, interview questions সহ আরো অনেক জিনিস। আর পুরা কোর্সে তোমাকে ১১টা ওয়েবসাইট করে দেখানো হবে। আরো ১১টা ওয়েবসাইট থাকবে তোমার হোমওয়ার্ক হিসেবে। এই পুরা জিনিস কোন রকমে শেষ করতে পারলে, একজন উন্নতমানের জুনিয়র ওয়েব ডেভেলপার না হয়ে উপায় থাকবে না।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-4">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-4').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">কোর্সের ভিডিও গুলো কিভাবে পাবো?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">কোর্সের ভিডিও গুলো প্রি-রেকর্ড থাকবে। তুমি একাউন্ট খুলে এই কোর্সে এনরোল করলে। ভিডিওগুলো কোর্স শুরু হওয়ার পরে থেকে প্রতিদিন একটা করে মডিউল দেয়া হবে। প্রত্যেকটা মডিউলে সাধরনত ১০ থেকে ১২ টা ভিডিও থাকে। এই ভিডিওগুলো যেদিন রিলিজ দেয়া হয়ে সেই দিনের মধ্যে তোমাকে দেখে ফিনিশ করতে হবে। তাই সেই হিসেবে কোর্সের জন্য প্রতিদিন ডেডিকেটেড সময় রাখতে হবে। এবং সেই সময়ের মধ্যে তুমি চাইলে শুয়ে-বসে, দাঁড়িয়ে-হেলিয়ে, পা দুলিয়ে, কোমর নাচিয়ে, কিংবা খাটের তলায় লুকিয়েও ভিডিও দেখতে পারবে।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-5">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-5').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">এই কোর্স কমপ্লিট করতে কতদিন সময় লাগবে?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">তুমি যদি প্রতিদিন ১ থেকে দেড় ঘন্টা ধরে ভিডিও দেখো, তার সাথে সাথে এক্সট্রা ৪ থেকে ৬ ঘন্টা প্রাকটিস করো, তাহলে তোমার ৫ মাসের মতো সময় লাগবে। তবে মাঝে মধ্যে হোমওয়ার্ক আর টেক এওয়ে প্রজেক্ট এর জন্য বাড়তি সময় বরাদ্ধ রাখতে হবে। হার্ডওয়ার্ক করার মেন্টালিটি নিয়ে আসতে হবে। ফাঁকিবাজি বা শর্টকাট করার কোন উপায় নাই।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-6">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-6').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">কোর্সটি করতে শিক্ষাগত ব্যাকগ্রাউন্ড কেমন থাকা লাগবে?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">আমরা কোর্সটি এমনভাবে সাজিয়েছি যেখানে একাডেমিক ব্যাকগ্রাউন্ড ম্যাটার করে না। তুমি যেকোনো একাডেমিক ব্যাকগ্রাউন্ড থেকে এই কোর্সটি করতে পারবে। চাইলে ভার্সিটির স্টুডেন্ট, কলেজের স্টুডেন্ট, চাকরিজীবি, বেকার, প্রেমিক, পলাতক প্রেমিক, এমনকি ফোন ধরে না এমন প্রেমিকা সবাই যাতে শিখতে পারে সেজন্য একদম শূন্য থেকে শুরু করা হয়েছে। তবে অবশ্যই সময় দিতে হবে ৬-৮ ঘন্টা। মিনিমাম ৪-৫ ঘন্টা।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-7">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-7').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">আমার কি কি জিনিস লাগবে?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">প্রথমত লাগবে ডেডিকেটেড সময়। প্রতিদিন মাস্ট ৬-৮ ঘন্টা। সম্ভব হলে ৮-১০ঘন্টা( সময় না দিতে পারলে। হার্ডওয়ার্ক করার ইচ্ছা না থাকলে কোর্সে এনরোল করে কোন লাভ হবে না।) দ্বিতীয়ত লাগবে একটা ল্যাপটপ বা একটা কম্পিউটার (যেখানে node, Visual Studio Code টাইপের সফটওয়্যার ইনস্টল করা যায়) আর তৃতীয়ত লাগবে মিনিমাম ২-১০ এমবিপিএস এর ইন্টারনেট। ব্রডব্যান্ড হলেই ভালো যাতে কোর্সের ভিডিও ভালোভাবে দেখা যায়। প্রফেশনাল ওয়েব ডেভেলপার হতে হলে মিনিমাম ৪ মাস সিরিয়াস হার্ডওয়ার্ক এর কথা মাথায় রেখে নামতে হবে।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-8">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-8').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">এই কোর্সটা ফ্রি না কেন?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">এই কোর্সটা জাস্ট ভিডিও দেখার কোর্স না। কারণ এই কোর্সের পিছনে সব মিলিয়ে ৩০ জন প্রফেশনাল ডেভেলপার করছে। তোমার ১১টা এসাইনমেন্ট দেখবে। এসাইনমেন্ট এর মার্কস প্লাস ফিডব্যাক দিবে। আরো সাতজন ওয়েব ডেভেলপার থাকবে যারা তোমার যেকোন প্রশ্নের উত্তর ২৪ ঘন্টার মধ্যে দেয়ার জন্য রেডি থাকবে। তোমার কোড এ সমস্যা হলে সেটা স্ক্রীনশেয়ার করে সলভ করে নেয়ার জন্য ডেডিকেটেড ডেভেলপার থাকবে। এছাড়াও কোর্সের ওয়েবসাইট বানানোর জন্য ডেভেলপার, ভিডিও এডিটর, কোর্স মডারেটর, লাইভ কন্সেপচুয়াল সেশন, জব প্লেসমেন্ট সাপোর্ট, সব মিলিয়ে যতজন লোক কাজ করে তাদের সংসার তো আর ফ্রি ফ্রি চলতে পারবে না। সেজন্য এই কোর্সে নূন্যতম একটা ফি আমাদের রাখতেই হচ্ছে।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-9">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-9').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">কোর্স ফি ম্যানেজ করতে পারছি, কিন্তু সেটা দিতে সমস্যা হচ্ছে আমি কি করবো?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">কোন টেনশন নাই। এখনই তোমার সমস্যা সম্পর্কে বিস্তারিত web@programming-hero.com এই ইমেইলে পাঠিয়ে দাও। অথবা আমাদের অফিসিয়াল নাম্বারে কল করে জানাও। আমরা ঘুমিয়ে না থাকলে সঙ্গে সঙ্গেই রিপ্লাই দিবো। সর্বোচ্চ ২৪ ঘন্টার মধ্যে উত্তর না পেলে, এই ইমেইল ওয়ালার খবর আছে।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-10">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-10').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">কোর্স শেষ করার পর চাকরি কিভাবে পাব?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">একটা জিনিস ভালো করে খেয়াল করো। আমরা কিন্তু চাকরির গ্যারান্টি দিচ্ছি না। আমরা বলছি তুমি মেইন কোর্স অনটাইমে ভালোভাবে ফিনিশ করলে SCIC তে যাবে। জব, ইন্টারভিউ রিলেটেড স্পেশাল ট্রেনিং পাবে। সেখানে হার্ডওয়ার্ক করলে আমাদের চারজন জব প্লেসমেন্ট টিম মেম্বার বিভিন্ন কোম্পানিতে তোমার সিভি/রেজুমি ফরওয়ার্ড করবে। সেই কোম্পানি তোমাকে ইন্টারভিউতে ডাকবে কি ডাকবে না সেটা তাদের সিদ্ধান্ত। আবার ইন্টারভিউতে ডাকলে তোমাকে চাকরি দিবে কি দিবে না সেটাও তাদের সিদ্ধান্ত। আমাদের দিক থেকে আমরা এইটুক কমিট করছি-- তুমি লেগে থাকলে আমরা তোমাকে হেল্প করবো। গাইড করবো। আমাদের কানেকশনগুলোতে তোমার সিভি ফরওয়ার্ড করবো।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-11">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-11').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">আপনাদের কোর্স থেকে কি সবাই চাকরি পায়?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">না। ১০০% সবাই চাকরি পায় না। তবে যারা মেইন কোর্স ফিনিশ করে। এবং SCIC ঠিক মতো ফিনিশ করে তাদের ৭০% চাকরি বা ইন্টার্ন পেয়ে যায়। বাকি যারা থাকে তাদের কেউ কেউ হয়তো ভার্সিটিতে প্রথম দিকে বা স্কুল কলেজে এবং তারা এখন চাকরি বা ইন্টার্ন খুজতেছে না। তবে যারা অনটাইমে কোর্স ফিনিশ করতে পারে না। তাদের জন্যও আমাদের সাপোর্ট থাকে এবং এদের থেকেও কেউ কেউ মাঝে মধ্যে চাকরি বা ইন্টার্ন পেয়ে যায়।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-12">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-12').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">কোর্স ফলো করতে গিয়ে কোথাও আটকে গেলে কি করবো?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">আমরা কোর্সের জন্য একটা সিক্রেট ফেইসবুক গ্রূপ তৈরি করেছি। যেখানে আমি থাকবো, আমাদের ১৪ জন প্রফেশনাল ওয়েব ডেভেলপার থাকবেন, অন্যান্য কাজে আমাদের আরো কয়েকজন টিম মেম্বার আছেন আরো কিছু কাজে গাইড করার জন্য, তোমাকে সাপোর্ট করার জন্য। আমাদের টার্গেট হচ্ছে--২৪ ঘন্টার মধ্যে তোমার সব প্রশ্নের উত্তর দেয়া। বেশিরভাগ সময় ইনস্ট্যান্ট উত্তর দেয়া হয়। গড়ে ৬-৮ ঘন্টার মধ্যে সব উত্তর পেয়ে যাবে। তাছাড়া লিখে কোডের ভিতরের প্রবলেম সলভ করতে না পারলে (শুক্রবার বাদে) প্রতিদিন তিন টা টাইমে প্যারালালি কয়েকটা মিট সেশন থাকবে। যেখানে তুমি স্ক্রিনশেয়ার করে তোমার প্রবলেম সলভ করতে পারবে। কোনো জিনিস ভালো না বুঝলে বুঝিয়ে দেইয়া হবে। আর কি লাগে? 😉</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-13">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-13').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">কোর্সের কনটেন্ট কি ফাইনাল?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">প্রয়োজন অনুসারে সবসময় আপডেট করা হয় কনটেন্ট। আমরা ইন্ডাস্ট্রি ফিডব্যাক, আমাদের নিজেদের ফিডব্যাক, কারেন্ট স্টুডেন্টদের ফিডব্যাক এবং যে স্টুডেন্ট রা বর্তমানে চাকরী করছে তাদের ফিডব্যাক মিলিয়ে আমরা প্রতি ব্যাচে কনটেন্ট আপডেট করি।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-14">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-14').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">আমি ফুল টাইম চাকরি করি আমার কি এই কোর্স করতে পারবো?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">যদি আমাদের কোর্সের ফ্লো সাথে ফিনিশ করতে চাও এবং SCIC তে যেতে চাও-- তাহলে তোমার তেল বের হয়ে যাবে। কারণ ডেইলি ডেইলি ৬ ঘন্টা সময় না দিলে বা ছুটির দিনে বাড়তি সময় না দিলে আমাদের কোর্সের কনটেন্ট, এসাইনমেন্ট, প্রাকটিস প্রবলেম ফিনিশ করতে পারবে না। কোর্স এ আমরা যত ফ্যাসিলিটি দিচ্ছি তা তুমি নিতে পারবে না। তাই আমি বলবো এক্সট্রিম হার্ডওয়ার্ক করে লেগে থাকতে পারবে সেই মেন্টালিটি নিয়ে তুমি আসতে পারো।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-15">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-15').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">এই কোর্সে কি WordPress বা Freelancing সম্পর্কে কিছু আছে?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">এই কোর্সে WordPress বা freelancing রিলেটেড সরাসরি কিছু নাই। কারণ, এই কোর্সের উদ্দেশ্য হচ্ছে সফটওয়্যার কোম্পানিতে ওয়েব ডেভেলপার বলতে যেটা বুঝানো হয় সেটা হতে চায় তাদের জন্য। এছাড়া এডভান্সড লেভেলে ওয়ার্ডপ্রেস কাস্টমাইজ করতে গেলে HTML, CSS, bootstrap, JavaScript, এমনকি React ও জানতে হয়। সেগুলা এই কোর্স থেকে শিখতে পারবে। তবে freelancing বা WordPress কে এই কোর্স হাইলাইট করা হয়নি।</p>
+                    </div>
+                </div>
+                <div class="accordion bg-[#5A32E1A5] dark:bg-slate-800 rounded-lg shadow">
+                    <input type="checkbox" class="hidden peer" id="accordion-16">
+                    <div class="flex items-center bg-[#684EFB] dark:bg-slate-900 px-10 py-5 font-medium hover:text-pink-500 rounded-lg shadow-sm space-x-2 cursor-pointer" onclick="document.getElementById('accordion-16').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-auto">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                        <h5 class="w-11/12">এইগুলা ছাড়াও আমার আরো একটা প্রশ্ন আছে। সেটা কোথায় জিজ্ঞেস করবো?</h5>
+                    </div>
+                    <div class="max-h-0 overflow-hidden peer-checked:max-h-96 transition-[max-height] duration-500">
+                        <p class="pl-24 pr-10 py-10 text-base">কোন টেনশন নাই। তোমার যত প্রশ্ন আছে সেগুলা মনের মাধুরী মিশিয়ে web@programming-hero.com এ পাঠিয়ে দাও। আমরা যত দ্রুত সম্ভব রিপ্লাই দিয়ে দিবো।</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col w-full md:w-5/12 order-first md:order-last mb-8 md:mb-0">
+                <img src="./asset/img/faq.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial bg-gray-300 dark:bg-transparent py-20 text-center dark:text-white">
+    <div class="container">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-12">স্টুডেন্টদের কোর্স সম্পর্কে মতামত</h2>
+        <div class="swiper testimonial-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="card md:w-3/4 md:mx-auto bg-white dark:bg-slate-700 px-10 py-5 rounded-lg shadow-lg">
+                        <div class="flex justify-center items-center w-20 h-20 rounded-full ring ring-black dark:ring-white mx-auto text-3xl">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <h5 class="text-lg font-medium mt-3">Hasan Rana</h5>
+                        <span class="text-yellow-500">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half"></i>
+                        </span>
+                        <p class="text-base mt-5">This is course is completely different. This course makes me a stronger, hard worker, and dedicated. and I am so proud to be a part of this course. I think I have made the best decision of my life by taking this course.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card md:w-3/4 md:mx-auto bg-white dark:bg-slate-700 px-10 py-5 rounded-lg shadow-lg">
+                        <div class="flex justify-center items-center w-20 h-20 rounded-full ring ring-black dark:ring-white mx-auto text-3xl">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <h5 class="text-lg font-medium mt-3">Maruf Ahamed</h5>
+                        <span class="text-yellow-500">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </span>
+                        <p class="text-base mt-5">কম্পিউটার টেকনোলজিতে পড়া শর্তেও কিছু না জানা ছিলাম আমি। ওয়েব নিয়ে তেমন কিছুই জানতাম না আমি । কোর্সে ভর্তি হওার আগে অনেকেই ভয় দেখিয়েছে যে এটা বিগেনার দের জন্য না। কিন্তু তাও আমি নিয়ে নেই আর আজ আমার কিছু না হলেও নিজের ভিতরে একটা অন্য রকম কনফিডেন্স চলে এসেছে। আমি এখন জুনিয়র ফ্রট এন্ড ডেভলপার।</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card md:w-3/4 md:mx-auto bg-white dark:bg-slate-700 px-10 py-5 rounded-lg shadow-lg">
+                        <div class="flex justify-center items-center w-20 h-20 rounded-full ring ring-black dark:ring-white mx-auto text-3xl">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <h5 class="text-lg font-medium mt-3">Masud Rana</h5>
+                        <span class="text-yellow-500">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </span>
+                        <p class="text-base mt-5">Programming Hero is such an amazing learning platform that offers complete package of Web Development. The uniqueness of programming hero is, Its impactful syllabus by which you will get maximum sufficient output with minimum sufficient knowledge.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card md:w-3/4 md:mx-auto bg-white dark:bg-slate-700 px-10 py-5 rounded-lg shadow-lg">
+                        <div class="flex justify-center items-center w-20 h-20 rounded-full ring ring-black dark:ring-white mx-auto text-3xl">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <h5 class="text-lg font-medium mt-3">Rabius Sunny</h5>
+                        <span class="text-yellow-500">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half"></i>
+                        </span>
+                        <p class="text-base mt-5">Very effective and caring course. Thank you so much everyone related to this journey who have worked hard and made us hard working.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[linear-gradient(107.07deg,_#684efb_-6.64%,_#5a00dd_89.11%)] dark:bg-none dark:bg-slate-700 py-20 mt-auto text-white">
+    <div class="container">
+        <div class="row flex flex-wrap text-center md:text-start">
+            <div class="col w-full md:w-3/5 md:mr-auto lg:w-5/12">
+                <ul>
+                    <li class="mb-8">
+                        <img src="./asset/img/logo.png" alt="" class="mx-auto md:mx-0">
+                    </li>
+                    <li class="mb-2">
+                        <i class="fa fa-map-marker-alt w-6"></i>
+                        <span>Level-4, 34, Awal Centre, Banani, Dhaka</span>
+                    </li>
+                    <li class="mb-2">
+                        <i class="fa fa-envelope w-6"></i>
+                        <span>Official: <a href="mailto:web@programming-hero.com" class="hover:text-pink-500">web@programming-hero.com</a></span>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt w-6"></i>
+                        <span>Helpline: <a href="tel:+8801322810867" class="hover:text-pink-500">01322810867</a> (Available: Sat - Thu, 10:00 AM to 7:00 PM)</span>
+                    </li>
+                    <li class="mt-5">
+                        <a href="#">
+                            <img src="./asset/img/play-badge.png" alt="" class="inline">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col w-full md:w-fit lg:w-3/12 order-first md:order-2 mb-10 md:mb-0 capitalize">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="hover:text-pink-500">blog</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">success</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">about us</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">refund policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">terms and conditions</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-pink-500">privacy & app privacy policy</a>
+                    </li>
+                    <li>
+                        <ul class="flex justify-center md:justify-start space-x-3">
+                            <li>
+                                <a href="#" class="inline-flex justify-center items-center w-8 h-8 rounded-full bg-pink-500 transition-transform duration-1000 hover:rotate-[360deg]"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="inline-flex justify-center items-center w-8 h-8 rounded-full bg-pink-500 transition-transform duration-1000 hover:rotate-[360deg]"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="inline-flex justify-center items-center w-8 h-8 rounded-full bg-pink-500 transition-transform duration-1000 hover:rotate-[360deg]"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="inline-flex justify-center items-center w-8 h-8 rounded-full bg-pink-500 transition-transform duration-1000 hover:rotate-[360deg]"><i class="fa fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col hidden lg:block lg:w-4/12 lg:order-3">
+                <img src="./asset/img/sslcommerz.png" alt="" class="w-full">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Fontawesome JS -->
+<script src="https://kit.fontawesome.com/478b113ee2.js" crossorigin="anonymous"></script>
+<!-- Swiper Slider JS -->
+<script src="./asset/js/swiper-bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="./asset/js/custom.js"></script>
+</body>
+</html>

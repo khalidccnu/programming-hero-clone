@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-primary {
+        @apply relative bg-[linear-gradient(335.64deg,_#ff589b_-19.22%,_#ff136f_118.87%)] hover:bg-[linear-gradient(300.64deg,_#ff136f_118.87%,_#ff589b_-19.22%)] pl-10 pr-14 py-3 text-sm rounded-3xl shadow-sm after:content-["\f061"] after:font-[fontAwesome] after:text-lg after:leading-8 after:text-pink-600/80 after:absolute after:top-1.5 after:right-1.5 after:h-8 after:w-8 after:bg-white after:rounded-full;
+    }
+}
